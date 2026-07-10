@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETHIO-SUPER-AI | Ethiopian AI Music, Cyberpunk Entertainment & Digital Culture</title>
+
+  <meta name="description" content="ETHIO-SUPER-AI is a futuristic Ethiopian AI entertainment platform featuring AI music, cyber visuals, and immersive digital experiences.">
+  <meta name="keywords" content="ETHIO-SUPER-AI, Ethio-super-ai, Ethiopian AI, Ethiopian music, AI music, cyberpunk Ethiopia, futuristic entertainment">
+  <meta name="author" content="Million Fikru">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="ETHIO-SUPER-AI | Ethiopian AI Music, Cyberpunk Entertainment & Digital Culture">
+  <meta property="og:description" content="Ethiopian culture reimagined through futuristic AI entertainment and cyberpunk visuals.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://millionfikru6-max.github.io/Ethio-super-ai/">
+  <meta property="og:image" content="https://millionfikru6-max.github.io/Ethio-super-ai/profile.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ETHIO-SUPER-AI | Ethiopian AI Music, Cyberpunk Entertainment & Digital Culture">
+  <meta name="twitter:description" content="Ethiopian culture reimagined through futuristic AI entertainment and cyberpunk visuals.">
+  <meta name="twitter:image" content="https://millionfikru6-max.github.io/Ethio-super-ai/profile.png">
+
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="stylesheet" href="./style.css">
+  <meta name="google-site-verification" content="ArNQmtWHPmADovcmXyyfULW5FO10P-lZNaQbTu9eltE" />
+</head>
+
+<body>
+  <canvas id="particle-background"></canvas>
+  <div id="custom-cursor"></div>
+
+  <nav class="main-nav">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">ETHIO<span class="accent-text">SUPER-AI</span></a>
+
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#signup">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="hero-container">
+    <div id="artists-target"></div>
+    <div class="hero-inner">
+      <h1 class="main-heading">
+        NEURAL <span class="neon-purple">SUPER-HERITAGE</span>
+      </h1>
+
+      <p class="hero-description">
+        Ethiopian culture reimagined through futuristic AI entertainment, cyberpunk visuals, and immersive digital sound.
+      </p>
+
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search songs or artists..." onkeyup="searchSongs()">
+      </div>
+
+      <div class="hero-actions">
+        <a href="#music" class="glow-button">Launch Audio</a>
+        <a href="#about" class="outline-button">The Vision</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <h2 class="section-title">ETHIO-AI EXPERIENCE</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>AI Music</h3>
+        <p>Futuristic Ethiopian sound powered by artificial intelligence and cyber aesthetics.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Cyber Visuals</h3>
+        <p>Interactive neon animations, particles, and immersive digital environments.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Cultural Fusion</h3>
+        <p>Traditional Ethiopian identity mixed with futuristic entertainment technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="music" class="content-section">
+    <div class="section-header">
+      <h2 class="sub-heading">
+        Sonic <span class="neon-blue">Architecture</span>
+      </h2>
+      <p class="section-description">
+        A futuristic Ethiopian entertainment experience powered by AI music,
+        cyberpunk visuals, and immersive digital culture.
+      </p>
+    </div>
+
+    <div class="music-grid">
+      <div class="music-card searchable">
+        <h3>AI Music</h3>
+        <p>Futuristic Ethiopian sound powered by artificial intelligence and cyber aesthetics.</p>
+      </div>
+      <div class="music-card searchable">
+        <h3>Cyber Visuals</h3>
+        <p>Interactive neon animations, particles, and immersive digital environments.</p>
+      </div>
+      <div class="music-card searchable">
+        <h3>Cultural Fusion</h3>
+        <p>Traditional Ethiopian identity mixed with futuristic entertainment technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="music-discovery" class="content-section">
+    <div class="section-header">
+      <h2 class="sub-heading">AI Music <span class="neon-blue">Discovery</span></h2>
+      <p class="section-description">Explore new sounds based on your mood, genre preferences, or AI-curated playlists.</p>
+    </div>
+    <div class="music-card">
+      <h3>🎵 Mood-Based Recommendations</h3>
+      <select id="mood-selector">
+        <option value="energetic">Energetic</option>
+        <option value="calm">Calm</option>
+        <option value="traditional">Traditional</option>
+        <option value="cyber">Cyberpunk</option>
+        <option value="ambient">Ambient</option>
+      </select>
+      <button onclick="getMoodRecommendation()">Get Mood Recommendation</button>
+      <div id="moodRecommendationResult" class="recommendation-result"></div>
+    </div>
+
+    <div class="music-card" style="margin-top: 30px;">
+      <h3>✨ AI-Curated Playlists</h3>
+      <button onclick="getAICuratedPlaylist()">Generate AI Playlist</button>
+      <div id="aiPlaylistResult" class="recommendation-result"></div>
+    </div>
+
+    <div class="music-card" style="margin-top: 30px;">
+      <h3>🔍 Genre Explorer</h3>
+      <input type="text" id="genreInput" class="input-element" placeholder="e.g., Ethio-Jazz, Synthwave, Amapiano">
+      <button onclick="exploreGenre()">Explore Genre</button>
+      <div id="genreExplorerResult" class="recommendation-result"></div>
+    </div>
+  </section>
+
+  <section id="artists" class="content-section">
+    <div class="section-header">
+      <h2 class="sub-heading">Featured <span class="neon-blue">Artists</span></h2>
+    </div>
+    <div class="music-grid">
+      <div class="music-card">
+        <img src="./images/profile.png" alt="Artist">
+        <div class="card-details">
+          <h3>Ethio Future</h3>
+          <p>Cyber Artist</p>
+          <p>Independent Ethiopian artist passionate about music, creativity, and building new experiences through technology.</p>
+        </div>
+      </div>
+      <div class="music-card">
+        <img src="./images/profile.png" alt="Artist">
+        <div class="card-details">
+          <h3>Neural Beats</h3>
+          <p>Electronic Producer</p>
+          <p>Independent Ethiopian artist passionate about music, creativity, and building new experiences through technology.</p>
+        </div>
+      </div>
+      <div class="music-card">
+        <img src="./images/profile.png" alt="Million Fikru">
+        <div class="card-details">
+          <h3>Million Fikru</h3>
+          <p>Founder & Creative Director</p>
+          <p>Independent Ethiopian artist passionate about music, creativity, and building new experiences through technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="content-section">
+    <div class="section-header">
+      <h2 class="sub-heading">Visual <span class="neon-purple">Sync</span></h2>
+    </div>
+    <div class="gallery-track reveal">
+      <div class="gallery-panel">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Future Addis">
+        <div class="panel-overlay">Future Addis</div>
+      </div>
+      <div class="gallery-panel">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Digital Nile">
+        <div class="panel-overlay">Digital Nile</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="content-section">
+    <div class="info-card reveal">
+      <h2 class="sub-heading">The AI <span class="neon-blue">Cortex</span></h2>
+      <p>ETHIO-SUPER-AI combines Ethiopian culture with futuristic entertainment technology.</p>
+      <div class="metrics-row">
+        <div class="metric-item">
+          <span class="metric-num" data-val="12">0</span>
+          <p>AI Engines</p>
+        </div>
+        <div class="metric-item">
+          <span class="metric-num" data-val="85">0</span>
+          <p>Virtual Artists</p>
+        </div>
+        <div class="metric-item">
+          <span class="metric-num" data-val="3000">0</span>
+          <p>Years of Culture</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-chat" class="content-section">
+    <div class="section-header">
+      <h2 class="sub-heading">AI <span class="neon-purple">Chat</span></h2>
+      <p class="section-description">Interact with our AI assistant to discover music, learn about Ethiopian culture, or get creative inspiration.</p>
+    </div>
+    <div class="glass-form">
+      <div id="chat-window" style="height: 300px; overflow-y: scroll; border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px; background: rgba(0,0,0,0.3);"></div>
+      <div class="field-group" style="display: flex; gap: 10px;">
+        <input type="text" id="chat-input" class="input-element" placeholder="Ask me anything about Ethio-AI music or culture...">
+        <button onclick="sendChatMessage()" class="glow-button" style="width: auto;">Send</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="content-section">
+    <form class="glass-form reveal" id="ethio-form">
+      <h2 class="form-title">Initialize <span class="neon-blue">Sync</span></h2>
+      <div class="field-group">
+        <input type="text" class="input-element" placeholder="Your Name" required>
+      </div>
+      <div class="field-group">
+        <input type="email" class="input-element" placeholder="Your Email" required>
+      </div>
+      <div class="field-group">
+        <textarea class="input-element area-element" placeholder="Message" required></textarea>
+      </div>
+      <button type="submit" class="submit-glow">Send Transmission</button>
+    </form>
+  </section>
+
+  <section id="ai-music-generator" class="content-section">
+    <div class="section-header">
+      <h2 class="sub-heading">AI Music <span class="neon-blue">Generator</span></h2>
+      <p class="section-description">Craft unique Ethiopian-inspired tracks with AI. Describe your vision, and let the AI compose!</p>
+    </div>
+    <div class="glass-form">
+      <div class="field-group">
+        <textarea id="music-prompt-input" class="input-element area-element" placeholder="Describe your music idea: e.g., 'Energetic Ethio-Jazz fusion with female vocals and a driving bassline', 'Calm ambient soundscape with traditional krar melodies'" rows="5"></textarea>
+      </div>
+      <div class="field-group">
+        <select id="music-genre-select" class="input-element">
+          <option value="">Select Genre (Optional)</option>
+          <option value="Ethio-Jazz">Ethio-Jazz</option>
+          <option value="Cyber-Traditional">Cyber-Traditional</option>
+          <option value="Ambient">Ambient</option>
+          <option value="Trap">Trap</option>
+        </select>
+      </div>
+      <button onclick="generateAIMusic()" class="submit-glow">Generate Music</button>
+      <div id="music-generator-result" class="recommendation-result" style="margin-top: 20px;"></div>
+    </div>
+  </section>
+
+  <section id="player" class="content-section">
+    <div class="section-header">
+      <h2 class="sub-heading">AI <span class="neon-blue">Music Player</span></h2>
+    </div>
+    <div class="music-card">
+      <h3>Ethio Future Beat</h3>
+      <p>❤️ Likes: <span id="likeCount">0</span> | 👁️ Views: <span id="viewCount">0</span></p>
+      <audio id="audioPlayer" controls></audio>
+      <div class="hero-actions" style="margin-top: 20px;">
+        <button onclick="playSong(\'./loyal.m4a\', \'Ethio Future Beat\')">🎵 Play Loyal</button>
+        <button onclick="likeSong()">❤️ Like Song</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="login" class="content-section">
+    <div class="glass-form">
+      <h2>User Login</h2>
+      <input type="email" id="loginEmail" class="input-element" placeholder="Email" style="margin-bottom: 10px;">
+      <input type="password" id="loginPassword" class="input-element" placeholder="Password" style="margin-bottom: 10px;">
+      <button onclick="loginUser()" class="submit-glow">Login</button>
+      <p id="loginMessage"></p>
+    </div>
+  </section>
+
+  <section id="signup" class="content-section">
+    <div class="glass-form">
+      <h2>Create Account</h2>
+      <input id="signupEmail" type="email" class="input-element" placeholder="Email" style="margin-bottom: 10px;">
+      <input id="signupPassword" type="password" class="input-element" placeholder="Password" style="margin-bottom: 10px;">
+      <button onclick="signupUser()" class="submit-glow">Sign Up</button>
+      <p id="signupMessage"></p>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <p>© 2026 ETHIO-SUPER-AI ENTERTAINMENT</p>
+    <div class="social-links">
+      <a href="mailto:millionfikru6@gmail.com">Email</a>
+      <a href="#contact">Contact</a>
+      <a href="#artists">Artists</a>
+    </div>
+  </footer>
+
+  <script src=\'https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js\'></script>
+  <script src=\'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js\'></script>
+  <script src=\'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js\'></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>

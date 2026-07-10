@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+
+# Sitemap location - works for both GitHub Pages and Netlify
+Sitemap: /sitemap.xml
