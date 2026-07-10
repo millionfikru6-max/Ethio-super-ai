@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /private
+Disallow: /admin/
+Disallow: /private/
 
-# Sitemap location - works for both GitHub Pages and Netlify
-Sitemap: /sitemap.xml
+Sitemap: https://millionfikru6-max.github.io/Ethio-super-ai/sitemap.xml

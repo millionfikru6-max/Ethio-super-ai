@@ -3,17 +3,11 @@
   <url>
     <loc>https://millionfikru6-max.github.io/Ethio-super-ai/</loc>
     <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/#home</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/#about</loc>
+    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/#features</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -25,15 +19,27 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/#gallery</loc>
+    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/dashboard</loc>
     <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/#contact</loc>
+    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/music-studio</loc>
     <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/discovery</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://millionfikru6-max.github.io/Ethio-super-ai/chat</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
