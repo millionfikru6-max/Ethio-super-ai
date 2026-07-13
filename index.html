@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ETHIO-SUPER-AI | Professional AI Music & Entertainment Platform</title>
 
-  <!-- SEO & Meta Tags -->
   <meta name="description" content="ETHIO-SUPER-AI: A professional AI music production and entertainment platform. Create music, discover artists, and explore Ethiopian culture through advanced AI technology.">
   <meta name="keywords" content="ETHIO-SUPER-AI, AI music, music production, Ethiopian AI, cyberpunk entertainment, AI chat, music discovery">
   <meta name="author" content="Million Fikru">
@@ -17,123 +16,115 @@
   <meta property="og:description" content="Create, discover, and share AI-powered Ethiopian music on the world's most advanced cyberpunk entertainment platform.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://millionfikru6-max.github.io/Ethio-super-ai/">
-  <meta property="og:image" content="https://millionfikru6-max.github.io/Ethio-super-ai/assets/images/profile.png">
+  <meta property="og:image" content="https://millionfikru6-max.github.io/Ethio-super-ai/profile.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ETHIO-SUPER-AI | Professional AI Music & Entertainment Platform">
   <meta name="twitter:description" content="Create, discover, and share AI-powered Ethiopian music on the world's most advanced cyberpunk entertainment platform.">
-  <meta name="twitter:image" content="https://millionfikru6-max.github.io/Ethio-super-ai/assets/images/profile.png">
+  <meta name="twitter:image" content="https://millionfikru6-max.github.io/Ethio-super-ai/profile.png">
 
-  <!-- Favicons & Manifest -->
-  <link rel="icon" type="image/png" href="./assets/favicons/favicon.png">
-  <link rel="apple-touch-icon" href="./assets/favicons/favicon.png">
-  <link rel="manifest" href="./manifest.json">
-  <meta name="theme-color" content="#050505">
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <canvas id="particle-background" aria-hidden="true"></canvas>
-  <div id="custom-cursor" aria-hidden="true"></div>
+  <canvas id="particle-background"></canvas>
+  <div id="custom-cursor"></div>
 
   <!-- Authentication State Container -->
   <div id="auth-container">
     <!-- Landing Page (Before Login) -->
     <div id="landing-page" class="page-container">
-      <nav class="main-nav" aria-label="Main Navigation">
+      <nav class="main-nav">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo">ETHIO<span class="accent-text">SUPER-AI</span></a>
-          <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu">
+          <div class="menu-toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-          </button>
+          </div>
           <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#artists">Artists</a></li>
             <li><a href="#auth-modal" onclick="showAuthModal('login')">Login</a></li>
-            <li><button onclick="showAuthModal('signup')" class="nav-signup-btn">Sign Up</button></li>
+            <li><a href="#auth-modal" onclick="showAuthModal('signup')">Sign Up</a></li>
           </ul>
         </div>
       </nav>
 
-      <main>
-        <section id="home" class="hero-container">
-          <div class="hero-inner">
-            <h1 class="main-heading">
-              NEURAL <span class="neon-purple">SUPER-HERITAGE</span>
-            </h1>
-            <p class="hero-description">
-              The world's first professional AI music platform powered by Ethiopian culture and cyberpunk aesthetics.
-            </p>
-            <div class="hero-actions">
-              <button onclick="showAuthModal('signup')" class="glow-button">Start Creating</button>
-              <button onclick="scrollToSection('features')" class="outline-button">Explore Features</button>
-            </div>
+      <section id="home" class="hero-container">
+        <div class="hero-inner">
+          <h1 class="main-heading">
+            NEURAL <span class="neon-purple">SUPER-HERITAGE</span>
+          </h1>
+          <p class="hero-description">
+            The world's first professional AI music platform powered by Ethiopian culture and cyberpunk aesthetics.
+          </p>
+          <div class="hero-actions">
+            <button onclick="showAuthModal('signup')" class="glow-button">Start Creating</button>
+            <button onclick="scrollToSection('features')" class="outline-button">Explore Features</button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="features" class="features-section">
-          <h2 class="section-title">PLATFORM FEATURES</h2>
-          <div class="features-grid">
-            <article class="feature-card">
-              <div class="feature-icon" aria-hidden="true">🎵</div>
-              <h3>AI Music Studio</h3>
-              <p>Professional music creation workspace with AI-powered composition and production tools.</p>
-            </article>
-            <article class="feature-card">
-              <div class="feature-icon" aria-hidden="true">💬</div>
-              <h3>AI Assistant</h3>
-              <p>Intelligent chat assistant for music discovery, creative inspiration, and cultural exploration.</p>
-            </article>
-            <article class="feature-card">
-              <div class="feature-icon" aria-hidden="true">🎧</div>
-              <h3>Music Discovery</h3>
-              <p>Advanced recommendation engine with mood-based, genre-based, and AI-curated playlists.</p>
-            </article>
-            <article class="feature-card">
-              <div class="feature-icon" aria-hidden="true">👤</div>
-              <h3>Artist Network</h3>
-              <p>Connect with creators, share projects, and collaborate on music production.</p>
-            </article>
-            <article class="feature-card">
-              <div class="feature-icon" aria-hidden="true">📊</div>
-              <h3>Analytics Dashboard</h3>
-              <p>Track your music performance, listener insights, and creative statistics.</p>
-            </article>
-            <article class="feature-card">
-              <div class="feature-icon" aria-hidden="true">🌍</div>
-              <h3>Global Community</h3>
-              <p>Join a worldwide community of Ethiopian music enthusiasts and AI creators.</p>
-            </article>
+      <section id="features" class="features-section">
+        <h2 class="section-title">PLATFORM FEATURES</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎵</div>
+            <h3>AI Music Studio</h3>
+            <p>Professional music creation workspace with AI-powered composition and production tools.</p>
           </div>
-        </section>
+          <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>AI Assistant</h3>
+            <p>Intelligent chat assistant for music discovery, creative inspiration, and cultural exploration.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎧</div>
+            <h3>Music Discovery</h3>
+            <p>Advanced recommendation engine with mood-based, genre-based, and AI-curated playlists.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👤</div>
+            <h3>Artist Network</h3>
+            <p>Connect with creators, share projects, and collaborate on music production.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Analytics Dashboard</h3>
+            <p>Track your music performance, listener insights, and creative statistics.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>Global Community</h3>
+            <p>Join a worldwide community of Ethiopian music enthusiasts and AI creators.</p>
+          </div>
+        </div>
+      </section>
 
-        <section id="artists" class="artists-section">
-          <h2 class="section-title">Featured Artists</h2>
-          <div class="artists-grid">
-            <div class="artist-card-preview">
-              <img src="./assets/images/profile.png" alt="Ethio Future">
-              <h3>Ethio Future</h3>
-              <p>Cyber Artist</p>
-            </div>
-            <div class="artist-card-preview">
-              <img src="./assets/images/profile.png" alt="Neural Beats">
-              <h3>Neural Beats</h3>
-              <p>Electronic Producer</p>
-            </div>
-            <div class="artist-card-preview">
-              <img src="./assets/images/profile.png" alt="Million Fikru">
-              <h3>Million Fikru</h3>
-              <p>Founder & Creative Director</p>
-            </div>
+      <section id="artists" class="artists-section">
+        <h2 class="section-title">Featured Artists</h2>
+        <div class="artists-grid">
+          <div class="artist-card-preview">
+            <img src="./profile.png" alt="Ethio Future">
+            <h3>Ethio Future</h3>
+            <p>Cyber Artist</p>
           </div>
-        </section>
-      </main>
+          <div class="artist-card-preview">
+            <img src="./profile.png" alt="Neural Beats">
+            <h3>Neural Beats</h3>
+            <p>Electronic Producer</p>
+          </div>
+          <div class="artist-card-preview">
+            <img src="./profile.png" alt="Million Fikru">
+            <h3>Million Fikru</h3>
+            <p>Founder & Creative Director</p>
+          </div>
+        </div>
+      </section>
 
       <footer class="main-footer">
         <p>© 2026 ETHIO-SUPER-AI | Professional AI Entertainment Platform</p>
@@ -144,44 +135,44 @@
     <div id="dashboard-page" class="page-container" style="display: none;">
       <div class="dashboard-layout">
         <!-- Sidebar Navigation -->
-        <aside class="sidebar" aria-label="Dashboard Navigation">
+        <aside class="sidebar">
           <div class="sidebar-header">
             <a href="#" class="sidebar-logo">ETHIO<span class="accent">AI</span></a>
-            <button class="sidebar-close" onclick="toggleSidebar()" aria-label="Close sidebar">×</button>
+            <button class="sidebar-close" onclick="toggleSidebar()">×</button>
           </div>
 
           <nav class="sidebar-nav">
-            <button class="nav-item active" onclick="switchWorkspace('dashboard')">
-              <span class="nav-icon" aria-hidden="true">📊</span>
+            <a href="#" class="nav-item active" onclick="switchWorkspace('dashboard')">
+              <span class="nav-icon">📊</span>
               <span class="nav-label">Dashboard</span>
-            </button>
-            <button class="nav-item" onclick="switchWorkspace('chat')">
-              <span class="nav-icon" aria-hidden="true">💬</span>
+            </a>
+            <a href="#" class="nav-item" onclick="switchWorkspace('chat')">
+              <span class="nav-icon">💬</span>
               <span class="nav-label">AI Chat</span>
-            </button>
-            <button class="nav-item" onclick="switchWorkspace('music-studio')">
-              <span class="nav-icon" aria-hidden="true">🎵</span>
+            </a>
+            <a href="#" class="nav-item" onclick="switchWorkspace('music-studio')">
+              <span class="nav-icon">🎵</span>
               <span class="nav-label">Music Studio</span>
-            </button>
-            <button class="nav-item" onclick="switchWorkspace('discovery')">
-              <span class="nav-icon" aria-hidden="true">🎧</span>
+            </a>
+            <a href="#" class="nav-item" onclick="switchWorkspace('discovery')">
+              <span class="nav-icon">🎧</span>
               <span class="nav-label">Discovery</span>
-            </button>
-            <button class="nav-item" onclick="switchWorkspace('library')">
-              <span class="nav-icon" aria-hidden="true">📚</span>
+            </a>
+            <a href="#" class="nav-item" onclick="switchWorkspace('library')">
+              <span class="nav-icon">📚</span>
               <span class="nav-label">My Library</span>
-            </button>
-            <button class="nav-item" onclick="switchWorkspace('artists')">
-              <span class="nav-icon" aria-hidden="true">👥</span>
+            </a>
+            <a href="#" class="nav-item" onclick="switchWorkspace('artists')">
+              <span class="nav-icon">👥</span>
               <span class="nav-label">Artists</span>
-            </button>
+            </a>
           </nav>
 
           <div class="sidebar-footer">
-            <button class="nav-item" onclick="switchWorkspace('settings')">
-              <span class="nav-icon" aria-hidden="true">⚙️</span>
+            <a href="#" class="nav-item" onclick="switchWorkspace('settings')">
+              <span class="nav-icon">⚙️</span>
               <span class="nav-label">Settings</span>
-            </button>
+            </a>
             <button onclick="logoutUser()" class="logout-btn">Logout</button>
           </div>
         </aside>
@@ -190,17 +181,17 @@
         <main class="workspace">
           <!-- Top Bar -->
           <div class="workspace-topbar">
-            <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+            <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
             <div class="workspace-title">
               <h1 id="workspace-title">Dashboard</h1>
             </div>
             <div class="topbar-actions">
               <div class="search-box">
-                <input type="text" id="global-search" placeholder="Search music, artists, projects..." aria-label="Search">
+                <input type="text" id="global-search" placeholder="Search music, artists, projects...">
               </div>
-              <button class="notification-btn" aria-label="Notifications">🔔</button>
+              <button class="notification-btn">🔔</button>
               <div class="user-menu">
-                <img src="./assets/images/profile.png" alt="User Avatar" class="user-avatar" onclick="toggleUserMenu()">
+                <img src="./profile.png" alt="User" class="user-avatar" onclick="toggleUserMenu()">
                 <div class="user-dropdown" id="user-dropdown">
                   <a href="#" onclick="switchWorkspace('profile')">Profile</a>
                   <a href="#" onclick="switchWorkspace('settings')">Settings</a>
@@ -222,28 +213,28 @@
               <!-- Quick Stats -->
               <div class="stats-grid">
                 <div class="stat-card">
-                  <div class="stat-icon" aria-hidden="true">🎵</div>
+                  <div class="stat-icon">🎵</div>
                   <div class="stat-info">
                     <div class="stat-value" id="stat-tracks">0</div>
                     <div class="stat-label">Tracks Created</div>
                   </div>
                 </div>
                 <div class="stat-card">
-                  <div class="stat-icon" aria-hidden="true">❤️</div>
+                  <div class="stat-icon">❤️</div>
                   <div class="stat-info">
                     <div class="stat-value" id="stat-favorites">0</div>
                     <div class="stat-label">Favorites</div>
                   </div>
                 </div>
                 <div class="stat-card">
-                  <div class="stat-icon" aria-hidden="true">👂</div>
+                  <div class="stat-icon">👂</div>
                   <div class="stat-info">
                     <div class="stat-value" id="stat-listeners">0</div>
                     <div class="stat-label">Total Listeners</div>
                   </div>
                 </div>
                 <div class="stat-card">
-                  <div class="stat-icon" aria-hidden="true">⏰</div>
+                  <div class="stat-icon">⏰</div>
                   <div class="stat-info">
                     <div class="stat-value" id="stat-hours">0</div>
                     <div class="stat-label">Hours Listened</div>
@@ -259,10 +250,24 @@
                 </div>
                 <div class="activity-list" id="activity-list">
                   <div class="activity-item">
-                    <span class="activity-icon" aria-hidden="true">🎵</span>
+                    <span class="activity-icon">🎵</span>
                     <div class="activity-details">
                       <p class="activity-title">Created "Cyber Addis 2099"</p>
                       <p class="activity-time">2 hours ago</p>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <span class="activity-icon">❤️</span>
+                    <div class="activity-details">
+                      <p class="activity-title">Added "Ethio Future Beat" to favorites</p>
+                      <p class="activity-time">5 hours ago</p>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <span class="activity-icon">👥</span>
+                    <div class="activity-details">
+                      <p class="activity-title">Followed "Neural Beats"</p>
+                      <p class="activity-time">1 day ago</p>
                     </div>
                   </div>
                 </div>
@@ -273,15 +278,15 @@
                 <h3>Quick Actions</h3>
                 <div class="action-buttons">
                   <button onclick="switchWorkspace('music-studio')" class="action-btn">
-                    <span class="btn-icon" aria-hidden="true">🎵</span>
+                    <span class="btn-icon">🎵</span>
                     <span>Create Music</span>
                   </button>
                   <button onclick="switchWorkspace('chat')" class="action-btn">
-                    <span class="btn-icon" aria-hidden="true">💬</span>
+                    <span class="btn-icon">💬</span>
                     <span>Chat with AI</span>
                   </button>
                   <button onclick="switchWorkspace('discovery')" class="action-btn">
-                    <span class="btn-icon" aria-hidden="true">🎧</span>
+                    <span class="btn-icon">🎧</span>
                     <span>Discover Music</span>
                   </button>
                 </div>
@@ -294,12 +299,20 @@
                 </div>
                 <div class="recommendations-list" id="recommendations-list">
                   <div class="recommendation-item">
-                    <img src="./assets/images/profile.png" alt="Track Cover">
+                    <img src="./profile.png" alt="Track">
                     <div class="recommendation-info">
                       <p class="recommendation-title">Rift Valley Echoes</p>
                       <p class="recommendation-artist">Ambient Ethiopian Soundscape</p>
                     </div>
-                    <button class="play-btn" onclick="playTrack('rift-valley')" aria-label="Play Rift Valley Echoes">▶</button>
+                    <button class="play-btn" onclick="playTrack('rift-valley')">▶</button>
+                  </div>
+                  <div class="recommendation-item">
+                    <img src="./profile.png" alt="Track">
+                    <div class="recommendation-info">
+                      <p class="recommendation-title">Digital Nile Flow</p>
+                      <p class="recommendation-artist">Electronic Fusion</p>
+                    </div>
+                    <button class="play-btn" onclick="playTrack('nile-flow')">▶</button>
                   </div>
                 </div>
               </div>
@@ -312,15 +325,24 @@
               <div class="chat-container">
                 <div class="chat-messages" id="chat-messages">
                   <div class="message ai-message">
-                    <div class="message-avatar" aria-hidden="true">🤖</div>
+                    <div class="message-avatar">🤖</div>
                     <div class="message-content">
-                      <p>Hello! I'm your AI assistant. How can I help you today?</p>
+                      <p>Hello! I'm your AI assistant. I can help you discover music, create tracks, learn about Ethiopian culture, or just chat. What would you like to explore today?</p>
                     </div>
                   </div>
                 </div>
                 <div class="chat-input-area">
-                  <input type="text" id="chat-input" placeholder="Ask anything about AI music..." aria-label="Chat input">
+                  <input type="text" id="chat-input" class="chat-input" placeholder="Ask me anything...">
                   <button onclick="sendChatMessage()" class="send-btn">Send</button>
+                </div>
+              </div>
+
+              <div class="chat-sidebar">
+                <h3>Conversation History</h3>
+                <div class="conversation-list" id="conversation-list">
+                  <div class="conversation-item active">Today</div>
+                  <div class="conversation-item">Yesterday</div>
+                  <div class="conversation-item">This Week</div>
                 </div>
               </div>
             </div>
@@ -328,26 +350,67 @@
 
           <!-- Music Studio Workspace -->
           <div id="workspace-music-studio" class="workspace-content">
-            <div class="studio-workspace">
-              <div class="studio-controls">
-                <div class="studio-section">
-                  <h3>AI Music Generator</h3>
-                  <textarea id="music-prompt" placeholder="Describe the music you want to create (e.g., Cyberpunk Ethio-Jazz with heavy bass)..." class="studio-input"></textarea>
-                  <div class="studio-options">
-                    <select id="studio-genre" class="studio-select" aria-label="Select Genre">
-                      <option value="">Select Genre</option>
-                      <option value="ethio-jazz">Ethio-Jazz</option>
-                      <option value="cyberpunk">Cyberpunk</option>
-                      <option value="electronic">Electronic</option>
-                      <option value="ambient">Ambient</option>
-                    </select>
-                    <button onclick="generateMusic()" class="generate-btn">Generate Music</button>
-                  </div>
+            <div class="music-studio">
+              <div class="studio-toolbar">
+                <div class="toolbar-section">
+                  <label>Project Name:</label>
+                  <input type="text" id="project-name" placeholder="Untitled Project" class="project-input">
+                </div>
+                <div class="toolbar-section">
+                  <label>Genre:</label>
+                  <select id="studio-genre" class="genre-select">
+                    <option value="">Select Genre</option>
+                    <option value="ethio-jazz">Ethio-Jazz</option>
+                    <option value="cyber-traditional">Cyber-Traditional</option>
+                    <option value="ambient">Ambient</option>
+                    <option value="trap">Trap</option>
+                    <option value="electronic">Electronic</option>
+                  </select>
+                </div>
+                <div class="toolbar-section">
+                  <label>Mood:</label>
+                  <select id="studio-mood" class="mood-select">
+                    <option value="">Select Mood</option>
+                    <option value="energetic">Energetic</option>
+                    <option value="calm">Calm</option>
+                    <option value="melancholic">Melancholic</option>
+                    <option value="uplifting">Uplifting</option>
+                  </select>
                 </div>
               </div>
-              <div class="studio-preview">
-                <div class="track-preview-card" id="track-preview">
-                  <p>Your generated music will appear here.</p>
+
+              <div class="studio-main">
+                <div class="studio-editor">
+                  <div class="editor-header">
+                    <h3>Music Composition</h3>
+                  </div>
+                  <textarea id="music-prompt" class="music-prompt" placeholder="Describe your music idea in detail. E.g., 'A high-energy Ethio-Jazz track with traditional krar melodies, modern electronic drops, and female vocals'"></textarea>
+                  <div class="editor-controls">
+                    <button onclick="generateMusic()" class="generate-btn">
+                      <span class="btn-icon">✨</span>
+                      <span>Generate Music</span>
+                    </button>
+                    <button onclick="saveProject()" class="save-btn">
+                      <span class="btn-icon">💾</span>
+                      <span>Save Project</span>
+                    </button>
+                    <button onclick="exportMusic()" class="export-btn">
+                      <span class="btn-icon">📥</span>
+                      <span>Export</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="studio-preview">
+                  <div class="preview-header">
+                    <h3>Generated Track</h3>
+                  </div>
+                  <div class="track-preview" id="track-preview">
+                    <div class="preview-placeholder">
+                      <p>🎵 Your generated track will appear here</p>
+                    </div>
+                  </div>
+                  <audio id="studio-player" controls class="studio-player"></audio>
                 </div>
               </div>
             </div>
@@ -357,13 +420,57 @@
           <div id="workspace-discovery" class="workspace-content">
             <div class="discovery-workspace">
               <div class="discovery-filters">
-                <button class="filter-btn active" onclick="filterDiscovery('all')">All</button>
-                <button class="filter-btn" onclick="filterDiscovery('trending')">Trending</button>
+                <button class="filter-btn active" onclick="filterDiscovery('trending')">Trending</button>
                 <button class="filter-btn" onclick="filterDiscovery('new')">New Releases</button>
-                <button class="filter-btn" onclick="filterDiscovery('ai-curated')">AI Curated</button>
+                <button class="filter-btn" onclick="filterDiscovery('recommended')">Recommended</button>
+                <button class="filter-btn" onclick="filterDiscovery('playlists')">Playlists</button>
               </div>
+
               <div class="discovery-grid" id="discovery-grid">
-                <!-- Tracks will be loaded here -->
+                <div class="discovery-card">
+                  <div class="card-image">
+                    <img src="./profile.png" alt="Track">
+                    <button class="play-overlay">▶</button>
+                  </div>
+                  <div class="card-info">
+                    <h4>Ethio Future Beat</h4>
+                    <p>High-energy cyberpunk anthem</p>
+                    <div class="card-stats">
+                      <span>❤️ 1.2K</span>
+                      <span>▶️ 5.3K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="discovery-card">
+                  <div class="card-image">
+                    <img src="./profile.png" alt="Track">
+                    <button class="play-overlay">▶</button>
+                  </div>
+                  <div class="card-info">
+                    <h4>Addis Night Dreams</h4>
+                    <p>Ambient relaxation soundscape</p>
+                    <div class="card-stats">
+                      <span>❤️ 892</span>
+                      <span>▶️ 3.1K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="discovery-card">
+                  <div class="card-image">
+                    <img src="./profile.png" alt="Track">
+                    <button class="play-overlay">▶</button>
+                  </div>
+                  <div class="card-info">
+                    <h4>Cyber Addis 2099</h4>
+                    <p>Futuristic electronic fusion</p>
+                    <div class="card-stats">
+                      <span>❤️ 2.1K</span>
+                      <span>▶️ 7.8K</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -372,12 +479,44 @@
           <div id="workspace-library" class="workspace-content">
             <div class="library-workspace">
               <div class="library-tabs">
-                <button class="tab-btn active" onclick="switchLibraryTab('tracks')">My Tracks</button>
-                <button class="tab-btn" onclick="switchLibraryTab('favorites')">Favorites</button>
+                <button class="tab-btn active" onclick="switchLibraryTab('favorites')">Favorites</button>
                 <button class="tab-btn" onclick="switchLibraryTab('playlists')">Playlists</button>
+                <button class="tab-btn" onclick="switchLibraryTab('history')">History</button>
+                <button class="tab-btn" onclick="switchLibraryTab('downloads')">Downloads</button>
               </div>
+
               <div class="library-content" id="library-content">
-                <!-- Library items will be loaded here -->
+                <div class="library-list">
+                  <div class="library-item">
+                    <div class="item-image">
+                      <img src="./profile.png" alt="Track">
+                    </div>
+                    <div class="item-info">
+                      <h4>Ethio Future Beat</h4>
+                      <p>Electronic Producer</p>
+                    </div>
+                    <div class="item-actions">
+                      <button class="action-icon">▶</button>
+                      <button class="action-icon">❤️</button>
+                      <button class="action-icon">⋯</button>
+                    </div>
+                  </div>
+
+                  <div class="library-item">
+                    <div class="item-image">
+                      <img src="./profile.png" alt="Track">
+                    </div>
+                    <div class="item-info">
+                      <h4>Addis Night Dreams</h4>
+                      <p>Ambient Artist</p>
+                    </div>
+                    <div class="item-actions">
+                      <button class="action-icon">▶</button>
+                      <button class="action-icon">❤️</button>
+                      <button class="action-icon">⋯</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -388,7 +527,7 @@
               <div class="artists-list">
                 <div class="artist-profile-card">
                   <div class="artist-header">
-                    <img src="./assets/images/profile.png" alt="Artist Avatar" class="artist-avatar">
+                    <img src="./profile.png" alt="Artist" class="artist-avatar">
                     <div class="artist-info">
                       <h3>Ethio Future</h3>
                       <p>Cyber Artist • 12.5K Followers</p>
@@ -396,6 +535,46 @@
                     <button class="follow-btn">Follow</button>
                   </div>
                   <p class="artist-bio">Independent Ethiopian artist passionate about music, creativity, and building new experiences through technology.</p>
+                  <div class="artist-stats">
+                    <div class="stat">
+                      <span class="stat-value">45</span>
+                      <span class="stat-label">Tracks</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-value">125K</span>
+                      <span class="stat-label">Plays</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-value">8.3K</span>
+                      <span class="stat-label">Followers</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="artist-profile-card">
+                  <div class="artist-header">
+                    <img src="./profile.png" alt="Artist" class="artist-avatar">
+                    <div class="artist-info">
+                      <h3>Neural Beats</h3>
+                      <p>Electronic Producer • 8.2K Followers</p>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                  </div>
+                  <p class="artist-bio">Creating electronic fusion music that blends traditional Ethiopian sounds with modern AI production.</p>
+                  <div class="artist-stats">
+                    <div class="stat">
+                      <span class="stat-value">32</span>
+                      <span class="stat-label">Tracks</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-value">89K</span>
+                      <span class="stat-label">Plays</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-value">5.1K</span>
+                      <span class="stat-label">Followers</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -407,14 +586,28 @@
               <div class="settings-section">
                 <h3>Account Settings</h3>
                 <div class="settings-group">
-                  <label for="settings-email">Email</label>
+                  <label>Email</label>
                   <input type="email" id="settings-email" placeholder="your@email.com" class="settings-input">
                 </div>
                 <div class="settings-group">
-                  <label for="settings-name">Display Name</label>
+                  <label>Display Name</label>
                   <input type="text" id="settings-name" placeholder="Your Name" class="settings-input">
                 </div>
                 <button onclick="saveSettings()" class="save-settings-btn">Save Changes</button>
+              </div>
+
+              <div class="settings-section">
+                <h3>Preferences</h3>
+                <div class="settings-group">
+                  <label>
+                    <input type="checkbox" checked> Email Notifications
+                  </label>
+                </div>
+                <div class="settings-group">
+                  <label>
+                    <input type="checkbox" checked> New Music Alerts
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -423,13 +616,35 @@
           <div id="workspace-profile" class="workspace-content">
             <div class="profile-workspace">
               <div class="profile-header">
-                <img src="./assets/images/profile.png" alt="Profile Avatar" class="profile-avatar">
+                <img src="./profile.png" alt="Profile" class="profile-avatar">
                 <div class="profile-info">
                   <h2 id="profile-name">Your Profile</h2>
                   <p id="profile-email">user@example.com</p>
                   <p id="profile-bio">AI Music Creator</p>
                 </div>
                 <button onclick="switchWorkspace('settings')" class="edit-profile-btn">Edit Profile</button>
+              </div>
+
+              <div class="profile-stats">
+                <div class="profile-stat">
+                  <span class="stat-value" id="profile-tracks">0</span>
+                  <span class="stat-label">Tracks Created</span>
+                </div>
+                <div class="profile-stat">
+                  <span class="stat-value" id="profile-followers">0</span>
+                  <span class="stat-label">Followers</span>
+                </div>
+                <div class="profile-stat">
+                  <span class="stat-value" id="profile-following">0</span>
+                  <span class="stat-label">Following</span>
+                </div>
+              </div>
+
+              <div class="profile-section">
+                <h3>Recent Tracks</h3>
+                <div class="profile-tracks" id="profile-tracks-list">
+                  <p>No tracks created yet. Start creating in the Music Studio!</p>
+                </div>
               </div>
             </div>
           </div>
@@ -439,24 +654,24 @@
   </div>
 
   <!-- Auth Modal -->
-  <div id="auth-modal" class="modal" style="display: none;" role="dialog" aria-labelledby="auth-modal-title">
+  <div id="auth-modal" class="modal" style="display: none;">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeAuthModal()" aria-label="Close modal">×</button>
+      <button class="modal-close" onclick="closeAuthModal()">×</button>
       
       <div id="login-form" class="auth-form">
-        <h2 id="auth-modal-title">Login to ETHIO-SUPER-AI</h2>
-        <input type="email" id="login-email" placeholder="Email" class="auth-input" aria-label="Email">
-        <input type="password" id="login-password" placeholder="Password" class="auth-input" aria-label="Password">
+        <h2>Login to ETHIO-SUPER-AI</h2>
+        <input type="email" id="login-email" placeholder="Email" class="auth-input">
+        <input type="password" id="login-password" placeholder="Password" class="auth-input">
         <button onclick="loginUser()" class="auth-btn">Login</button>
         <p>Don't have an account? <a href="#" onclick="switchAuthForm('signup')">Sign Up</a></p>
       </div>
 
       <div id="signup-form" class="auth-form" style="display: none;">
         <h2>Create Your Account</h2>
-        <input type="text" id="signup-name" placeholder="Full Name" class="auth-input" aria-label="Full Name">
-        <input type="email" id="signup-email" placeholder="Email" class="auth-input" aria-label="Email">
-        <input type="password" id="signup-password" placeholder="Password" class="auth-input" aria-label="Password">
-        <input type="password" id="signup-confirm" placeholder="Confirm Password" class="auth-input" aria-label="Confirm Password">
+        <input type="text" id="signup-name" placeholder="Full Name" class="auth-input">
+        <input type="email" id="signup-email" placeholder="Email" class="auth-input">
+        <input type="password" id="signup-password" placeholder="Password" class="auth-input">
+        <input type="password" id="signup-confirm" placeholder="Confirm Password" class="auth-input">
         <button onclick="signupUser()" class="auth-btn">Create Account</button>
         <p>Already have an account? <a href="#" onclick="switchAuthForm('login')">Login</a></p>
       </div>
@@ -464,7 +679,7 @@
   </div>
 
   <!-- Loading Overlay -->
-  <div id="loading-overlay" class="loading-overlay" style="display: none;" aria-live="assertive">
+  <div id="loading-overlay" class="loading-overlay" style="display: none;">
     <div class="loading-spinner">
       <div class="spinner"></div>
       <p id="loading-text">Loading...</p>
@@ -472,28 +687,12 @@
   </div>
 
   <!-- Notification Toast -->
-  <div id="notification-toast" class="notification-toast" aria-live="polite"></div>
+  <div id="notification-toast" class="notification-toast"></div>
 
-  <!-- Firebase Scripts (Consider using modules for production) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-  
-  <!-- Main Script -->
-  <script src="./assets/js/script.js"></script>
-  
-  <!-- Service Worker Registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').then(registration => {
-          console.log('SW registered: ', registration);
-        }).catch(registrationError => {
-          console.log('SW registration failed: ', registrationError);
-        });
-      });
-    }
-  </script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
