@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
+Disallow: /assets/audio/
+Disallow: /assets/js/
 Disallow: /private/
 
 Sitemap: https://millionfikru6-max.github.io/Ethio-super-ai/sitemap.xml
