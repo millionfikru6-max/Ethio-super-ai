@@ -1,0 +1,222 @@
+/* =====================================================================
+   ETHIO-SUPER-AI — ENHANCEMENTS STYLESHEET
+   Purely additive styles for newly completed features. Nothing here
+   overrides or removes existing selectors from style.css.
+   ===================================================================== */
+
+/* ---------- shared small bits ---------- */
+.esa-hidden { display: none !important; }
+.esa-badge {
+  position: absolute; top: -4px; right: -4px;
+  background: var(--purple); color: #fff;
+  font-size: 0.65rem; font-weight: 700;
+  min-width: 16px; height: 16px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 3px; box-shadow: 0 0 8px var(--purple);
+  pointer-events: none;
+}
+.esa-relbtn { position: relative; }
+
+/* ---------- Command Palette ---------- */
+.esa-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px); z-index: 5000;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 10vh;
+}
+.esa-palette {
+  width: 90%; max-width: 620px; background: var(--bg-secondary);
+  border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: 0 0 40px rgba(0,242,255,0.15);
+  overflow: hidden; max-height: 70vh; display: flex; flex-direction: column;
+}
+.esa-palette-input {
+  width: 100%; padding: 18px 20px; font-size: 1.05rem;
+  background: transparent; border: none; border-bottom: 1px solid var(--border);
+  color: var(--text); outline: none;
+}
+.esa-palette-list { overflow-y: auto; padding: 8px; }
+.esa-palette-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; border-radius: 8px; cursor: pointer;
+  color: var(--text-secondary);
+}
+.esa-palette-item .esa-icon { font-size: 1.1rem; width: 22px; text-align: center; }
+.esa-palette-item .esa-main { flex: 1; color: var(--text); }
+.esa-palette-item .esa-sub { font-size: 0.75rem; opacity: 0.6; }
+.esa-palette-item.active, .esa-palette-item:hover {
+  background: rgba(0,242,255,0.1); color: var(--blue);
+}
+.esa-palette-empty { padding: 20px; text-align: center; color: var(--text-secondary); }
+.esa-palette-hint {
+  padding: 8px 16px; font-size: 0.72rem; color: var(--text-secondary);
+  border-top: 1px solid var(--border); display: flex; gap: 14px;
+}
+.esa-kbd {
+  display: inline-block; padding: 1px 6px; border: 1px solid var(--border);
+  border-radius: 4px; font-family: monospace; font-size: 0.7rem;
+  background: var(--bg-tertiary); color: var(--text);
+}
+
+/* ---------- Keyboard shortcuts modal ---------- */
+.esa-shortcuts-grid { display: grid; gap: 10px; margin-top: 16px; }
+.esa-shortcut-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Notification dropdown ---------- */
+.esa-notif-panel {
+  position: absolute; top: 54px; right: 20px; width: 340px; max-height: 420px;
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  z-index: 3000; overflow: hidden; display: flex; flex-direction: column;
+}
+.esa-notif-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+}
+.esa-notif-header h4 { margin: 0; font-size: 0.95rem; }
+.esa-notif-clear { background: none; border: none; color: var(--blue); cursor: pointer; font-size: 0.78rem; }
+.esa-notif-list { overflow-y: auto; }
+.esa-notif-item {
+  display: flex; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--border);
+}
+.esa-notif-item .esa-icon { font-size: 1.05rem; }
+.esa-notif-item .esa-notif-msg { font-size: 0.85rem; color: var(--text); }
+.esa-notif-item .esa-notif-time { font-size: 0.7rem; color: var(--text-secondary); margin-top: 2px; }
+.esa-notif-empty { padding: 30px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; }
+
+/* ---------- Activity History modal ---------- */
+.esa-activity-list { max-height: 55vh; overflow-y: auto; margin-top: 12px; }
+.esa-activity-row {
+  display: flex; gap: 12px; padding: 12px 6px; border-bottom: 1px solid var(--border);
+}
+.esa-activity-row .esa-icon { font-size: 1.2rem; }
+.esa-activity-row .esa-title { color: var(--text); font-size: 0.9rem; }
+.esa-activity-row .esa-time { color: var(--text-secondary); font-size: 0.72rem; margin-top: 2px; }
+
+/* ---------- Saved Projects panel (Music Studio) ---------- */
+.esa-projects-panel { margin-top: 24px; }
+.esa-projects-panel h3 { margin-bottom: 12px; }
+.esa-projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 14px; }
+.esa-project-card {
+  background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px;
+}
+.esa-project-card h4 { margin: 0 0 6px; font-size: 0.95rem; color: var(--text); }
+.esa-project-card .esa-project-meta { font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 10px; }
+.esa-project-actions { display: flex; gap: 8px; }
+.esa-project-actions button {
+  flex: 1; padding: 6px 0; font-size: 0.75rem; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--border); background: transparent; color: var(--text-secondary);
+}
+.esa-project-actions button:hover { color: var(--blue); border-color: var(--blue); }
+.esa-projects-empty { color: var(--text-secondary); font-size: 0.85rem; padding: 10px 0; }
+
+/* ---------- Conversation management (chat sidebar) ---------- */
+.esa-chat-tools { display: flex; gap: 8px; margin-bottom: 10px; }
+.esa-new-chat-btn {
+  flex: 1; padding: 8px; border-radius: 8px; border: 1px solid var(--blue);
+  background: rgba(0,242,255,0.08); color: var(--blue); cursor: pointer; font-size: 0.8rem;
+}
+.esa-chat-search {
+  width: 100%; padding: 8px 10px; margin-bottom: 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.8rem;
+}
+.conversation-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 6px;
+  cursor: pointer;
+}
+.conversation-item .conv-title {
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+}
+.conversation-item .esa-conv-actions { display: none; gap: 4px; flex-shrink: 0; }
+.conversation-item:hover .esa-conv-actions { display: flex; }
+.conversation-item .esa-conv-actions button {
+  background: none; border: none; cursor: pointer; font-size: 0.75rem; opacity: 0.75;
+  color: var(--text-secondary);
+}
+.conversation-item .esa-conv-actions button:hover { opacity: 1; color: var(--blue); }
+.conversation-item.pinned .conv-title::before { content: "📌 "; }
+
+/* ---------- Chat message enhancements ---------- */
+.message-content { max-width: 100%; }
+.message-content pre {
+  background: #0d0d12; border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px; overflow-x: auto; margin: 10px 0; position: relative;
+}
+.message-content pre code { font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.82rem; line-height: 1.5; }
+.message-content code:not(pre code) {
+  background: rgba(255,255,255,0.08); padding: 1px 6px; border-radius: 4px;
+  font-family: monospace; font-size: 0.85em; color: var(--blue);
+}
+.message-content .esa-code-copy {
+  position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border); color: var(--text-secondary);
+  font-size: 0.7rem; padding: 3px 8px; border-radius: 6px; cursor: pointer;
+}
+.message-content .esa-code-copy:hover { color: var(--blue); }
+.message-content ul, .message-content ol { margin: 8px 0 8px 22px; }
+.message-content blockquote {
+  border-left: 3px solid var(--purple); margin: 8px 0; padding: 4px 12px;
+  color: var(--text-secondary);
+}
+.message-content h1, .message-content h2, .message-content h3 { margin: 10px 0 6px; }
+.message-content a { color: var(--blue); }
+
+.tok-keyword { color: #ff79c6; }
+.tok-string { color: #a3e635; }
+.tok-comment { color: #6b7280; font-style: italic; }
+.tok-number { color: #fbbf24; }
+.tok-func { color: #60a5fa; }
+
+.stream-cursor { display: inline-block; width: 7px; margin-left: 2px; background: var(--blue); animation: esa-blink 0.9s steps(1) infinite; }
+@keyframes esa-blink { 50% { opacity: 0; } }
+
+/* attachments preview + chips */
+.esa-attach-preview { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.esa-attach-chip {
+  display: flex; align-items: center; gap: 6px; background: var(--bg-tertiary);
+  border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px; font-size: 0.75rem;
+}
+.esa-attach-chip img { width: 28px; height: 28px; object-fit: cover; border-radius: 4px; }
+.esa-attach-chip button { background: none; border: none; color: var(--text-secondary); cursor: pointer; }
+.esa-msg-attachments { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.esa-msg-attachments img { max-width: 160px; border-radius: 8px; border: 1px solid var(--border); }
+.esa-msg-file-chip {
+  display: flex; align-items: center; gap: 6px; background: var(--bg-tertiary);
+  border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-size: 0.78rem;
+}
+
+/* chat input extra buttons */
+.esa-chat-extra-btn {
+  background: none; border: none; color: var(--text-secondary); font-size: 1.1rem;
+  cursor: pointer; padding: 6px 8px;
+}
+.esa-chat-extra-btn:hover { color: var(--blue); }
+.esa-chat-extra-btn.esa-recording { color: var(--error); animation: esa-blink 1s infinite; }
+
+/* global search dropdown */
+.esa-search-panel {
+  position: absolute; top: 46px; left: 0; width: 100%; min-width: 320px;
+  background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2500; max-height: 400px; overflow-y: auto;
+}
+.esa-search-group-label {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--text-secondary); padding: 10px 14px 4px;
+}
+.esa-search-result {
+  display: flex; align-items: center; gap: 10px; padding: 9px 14px; cursor: pointer; color: var(--text);
+}
+.esa-search-result:hover { background: rgba(0,242,255,0.08); color: var(--blue); }
+.esa-search-empty { padding: 18px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; }
+
+/* favorites heart state */
+.esa-fav-active { color: var(--error) !important; }
+
+@media (max-width: 640px) {
+  .esa-notif-panel { right: 10px; width: calc(100% - 20px); }
+  .esa-palette { width: 95%; }
+}
