@@ -58,6 +58,7 @@
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <canvas id="particle-background" aria-hidden="true"></canvas>
   <div id="custom-cursor" aria-hidden="true"></div>
 
@@ -207,7 +208,7 @@
         </aside>
 
         <!-- Main Workspace -->
-        <main class="workspace">
+        <main class="workspace" id="main-content">
           <!-- Top Bar -->
           <div class="workspace-topbar">
             <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar menu">☰</button>
@@ -216,15 +217,29 @@
             </div>
             <div class="topbar-actions">
               <div class="search-box">
-                <input type="text" id="global-search" placeholder="Search music, artists, projects...">
+                <input type="text" id="global-search" placeholder="Search music, artists, projects..." autocomplete="off" aria-label="Global search">
+                <div class="search-dropdown" id="search-dropdown"></div>
               </div>
-              <button class="notification-btn" aria-label="Notifications">🔔</button>
+              <button class="notification-btn" onclick="toggleNotificationCenter()" aria-label="Notifications" aria-expanded="false">🔔</button>
               <div class="user-menu">
-                <img src="./profile.png" alt="User profile" class="user-avatar" onclick="toggleUserMenu()" role="button" tabindex="0" aria-label="User menu">
+                <img src="./profile.png" alt="User profile" class="user-avatar" onclick="toggleUserMenu()" role="button" tabindex="0" aria-label="User menu" aria-haspopup="true" aria-expanded="false">
                 <div class="user-dropdown" id="user-dropdown" role="menu" aria-label="User account menu">
-                  <a href="#" onclick="switchWorkspace('profile')">Profile</a>
-                  <a href="#" onclick="switchWorkspace('settings')">Settings</a>
-                  <a href="#" onclick="logoutUser()">Logout</a>
+                  <a href="#" onclick="switchWorkspace('profile')" role="menuitem">Profile</a>
+                  <a href="#" onclick="switchWorkspace('settings')" role="menuitem">Settings</a>
+                  <a href="#" onclick="logoutUser()" role="menuitem">Logout</a>
+                </div>
+              </div>
+            </div>
+            <!-- Notification Center -->
+            <div class="notification-center" id="notification-center" aria-label="Notification center">
+              <div class="notification-center-header">
+                <h3>Notifications</h3>
+                <button onclick="clearNotifications()" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:0.85rem;">Clear All</button>
+              </div>
+              <div class="notification-center-list" id="notification-center-list">
+                <div class="notification-center-empty">
+                  <div class="empty-icon">🔔</div>
+                  <p>No notifications yet</p>
                 </div>
               </div>
             </div>
@@ -458,11 +473,51 @@
               </div>
 
               <div class="discovery-grid" id="discovery-grid">
-                <div class="discovery-card">
+                <div class="discovery-card" data-track-id="ethio-future-beat" data-title="Ethio Future Beat" data-artist="Ethio Future" data-genre="cyberpunk">
                   <div class="card-image">
-                    <img src="./profile.png" alt="Track" loading="lazy">
-                    <button class="play-overlay" onclick="playTrack(\'ethio-future-beat\')" aria-label="Play Ethio Future Beat">▶</button>
+                    <img src="./profile.png" alt="Ethio Future Beat" loading="lazy">
+                    <button class="play-overlay" onclick="playTrack('ethio-future-beat')" aria-label="Play Ethio Future Beat">▶</button>
                   </div>
+                  <div class="card-info">
+                    <h4>Ethio Future Beat</h4>
+                    <p>High-energy cyberpunk anthem</p>
+                    <div class="card-stats">
+                      <span>❤️ 1.2K</span>
+                      <span>▶️ 5.3K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="discovery-card" data-track-id="addis-night-dreams" data-title="Addis Night Dreams" data-artist="Ambient Artist" data-genre="ambient">
+                  <div class="card-image">
+                    <img src="./profile.png" alt="Addis Night Dreams" loading="lazy">
+                    <button class="play-overlay" onclick="playTrack('addis-night-dreams')" aria-label="Play Addis Night Dreams">▶</button>
+                  </div>
+                  <div class="card-info">
+                    <h4>Addis Night Dreams</h4>
+                    <p>Ambient relaxation soundscape</p>
+                    <div class="card-stats">
+                      <span>❤️ 892</span>
+                      <span>▶️ 3.1K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="discovery-card" data-track-id="cyber-addis-2099" data-title="Cyber Addis 2099" data-artist="Million Fikru" data-genre="electronic">
+                  <div class="card-image">
+                    <img src="./profile.png" alt="Cyber Addis 2099" loading="lazy">
+                    <button class="play-overlay" onclick="playTrack('cyber-addis-2099')" aria-label="Play Cyber Addis 2099">▶</button>
+                  </div>
+                  <div class="card-info">
+                    <h4>Cyber Addis 2099</h4>
+                    <p>Futuristic electronic fusion</p>
+                    <div class="card-stats">
+                      <span>❤️ 2.1K</span>
+                      <span>▶️ 7.8K</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
                   <div class="card-info">
                     <h4>Ethio Future Beat</h4>
                     <p>High-energy cyberpunk anthem</p>
@@ -517,11 +572,19 @@
               </div>
 
               <div class="library-content" id="library-content">
-                <div class="library-list">
-                  <div class="library-item">
-                    <div class="item-image">
-                      <img src="./profile.png" alt="Track" loading="lazy">
-                    </div>
+                <div id="library-favorites" class="library-tab-content active">
+                  <div class="library-list" id="favorites-list"></div>
+                </div>
+                <div id="library-playlists" class="library-tab-content" style="display:none;">
+                  <div class="library-list" id="playlists-list"></div>
+                </div>
+                <div id="library-history" class="library-tab-content" style="display:none;">
+                  <div class="library-list" id="history-list"></div>
+                </div>
+                <div id="library-downloads" class="library-tab-content" style="display:none;">
+                  <div class="library-list" id="downloads-list"></div>
+                </div>
+              </div>
                     <div class="item-info">
                       <h4>Ethio Future Beat</h4>
                       <p>Electronic Producer</p>
@@ -680,6 +743,30 @@
             </div>
           </div>
         </main>
+      </div>
+    </div>
+
+    <!-- Global Player Bar -->
+    <div class="global-player" id="global-player">
+      <div class="track-info">
+        <img src="./profile.png" alt="Album art" class="track-thumb" id="global-player-thumb">
+        <div class="track-details">
+          <div class="track-title" id="global-player-title">No track playing</div>
+          <div class="track-artist" id="global-player-artist">Select a track to play</div>
+        </div>
+      </div>
+      <div class="player-controls">
+        <button class="control-btn" onclick="previousInQueue()" aria-label="Previous">⏮</button>
+        <button class="play-pause-btn" onclick="toggleGlobalPlayPause()" aria-label="Play/Pause" id="global-play-pause">▶</button>
+        <button class="control-btn" onclick="nextInQueue()" aria-label="Next">⏭</button>
+      </div>
+      <div class="progress-bar" onclick="seekTrack(event)" id="global-progress-bar">
+        <div class="progress-fill" id="global-progress-fill"></div>
+      </div>
+      <div class="time-display" id="global-time-display">0:00 / 0:00</div>
+      <div class="volume-control">
+        <span>🔊</span>
+        <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" onchange="setVolume(this.value)" aria-label="Volume">
       </div>
     </div>
   </div>
