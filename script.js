@@ -522,39 +522,29 @@ function playTrack(trackId) {
   let trackSrc = "";
   let trackTitle = "";
 
-  // Map trackId to actual audio files
   switch (trackId) {
-    case "rift-valley":
-      trackSrc = "./mystical.m4a";
-      trackTitle = "Rift Valley Echoes";
-      break;
-    case "nile-flow":
-      trackSrc = "./chanel.m4a";
-      trackTitle = "Digital Nile Flow";
-      break;
-    case "ethio-future-beat":
-      trackSrc = "./loyal.m4a";
-      trackTitle = "Ethio Future Beat";
-      break;
-    case "addis-night-dreams":
-      trackSrc = "./mystical.m4a"; // Reusing for demo
-      trackTitle = "Addis Night Dreams";
-      break;
-    case "cyber-addis-2099":
-      trackSrc = "./chanel.m4a"; // Reusing for demo
-      trackTitle = "Cyber Addis 2099";
-      break;
-    default:
-      showNotification("Track not found!", "error");
-      return;
+    case "rift-valley": trackSrc = "./mystical.m4a"; trackTitle = "Rift Valley Echoes"; break;
+    case "nile-flow": trackSrc = "./chanel.m4a"; trackTitle = "Digital Nile Flow"; break;
+    case "ethio-future-beat": trackSrc = "./loyal.m4a"; trackTitle = "Ethio Future Beat"; break;
+    case "addis-night-dreams": trackSrc = "./mystical.m4a"; trackTitle = "Addis Night Dreams"; break;
+    case "cyber-addis-2099": trackSrc = "./chanel.m4a"; trackTitle = "Cyber Addis 2099"; break;
+    default: showNotification("Track not found!", "error"); return;
   }
 
   audioPlayer.src = trackSrc;
+  currentTrack = trackId;
+
   audioPlayer.play()
     .then(() => {
+      isPlaying = true;
+      updateGlobalPlayer(trackTitle, trackId);
       showNotification(`Playing: ${trackTitle}`, "success");
       userStats.hours++;
       updateDashboard();
+
+      musicHistory.unshift({ trackId, trackTitle, timestamp: new Date() });
+      if (musicHistory.length > 50) musicHistory.pop();
+      localStorage.setItem("musicHistory", JSON.stringify(musicHistory));
     })
     .catch(error => {
       console.error("Error playing audio:", error);
@@ -562,22 +552,302 @@ function playTrack(trackId) {
     });
 }
 
-// ==================== LIBRARY FUNCTIONS ==================== 
+function updateGlobalPlayer(title, trackId) {
+  const globalPlayer = document.getElementById("global-player");
+  const playerTitle = document.getElementById("global-player-title");
+  const playerArtist = document.getElementById("global-player-artist");
+  const playerThumb = document.getElementById("global-player-thumb");
+
+  if (globalPlayer) globalPlayer.classList.add("active");
+  if (playerTitle) playerTitle.textContent = title;
+  if (playerArtist) {
+    const trackInfo = getTrackInfo(trackId);
+    playerArtist.textContent = trackInfo.artist;
+  }
+  if (playerThumb) playerThumb.src = "./profile.png";
+}
+
+function getTrackInfo(trackId) {
+  const tracks = {
+    'ethio-future-beat': { title: 'Ethio Future Beat', artist: 'Ethio Future' },
+    'addis-night-dreams': { title: 'Addis Night Dreams', artist: 'Ambient Artist' },
+    'cyber-addis-2099': { title: 'Cyber Addis 2099', artist: 'Million Fikru' },
+    'rift-valley': { title: 'Rift Valley Echoes', artist: 'Ambient Ethiopian Soundscape' },
+    'nile-flow': { title: 'Digital Nile Flow', artist: 'Electronic Fusion' }
+  };
+  return tracks[trackId] || { title: trackId, artist: 'Unknown Artist' };
+}
+
+function toggleGlobalPlayPause() {
+  const audioPlayer = document.getElementById("studio-player");
+  const playPauseBtn = document.getElementById("global-play-pause");
+  if (!audioPlayer) return;
+
+  if (isPlaying) {
+    audioPlayer.pause();
+    isPlaying = false;
+    if (playPauseBtn) playPauseBtn.textContent = "▶";
+  } else {
+    audioPlayer.play()
+      .then(() => {
+        isPlaying = true;
+        if (playPauseBtn) playPauseBtn.textContent = "⏸";
+      })
+      .catch(() => {
+        showNotification("Failed to play track", "error");
+      });
+  }
+}
+
+function nextInQueue() {
+  if (musicQueue.length === 0) {
+    showNotification("Queue is empty", "info");
+    return;
+  }
+  if (currentQueueIndex < musicQueue.length - 1) {
+    currentQueueIndex++;
+    playTrack(musicQueue[currentQueueIndex]);
+  } else {
+    showNotification("End of queue", "info");
+  }
+}
+
+function previousInQueue() {
+  if (musicQueue.length === 0) return;
+  if (currentQueueIndex > 0) {
+    currentQueueIndex--;
+    playTrack(musicQueue[currentQueueIndex]);
+  }
+}
+
+function playQueue() {
+  if (musicQueue.length === 0) {
+    showNotification("Queue is empty", "error");
+    return;
+  }
+  playTrack(musicQueue[currentQueueIndex]);
+}
+
+function addToQueue(trackId) {
+  musicQueue.push(trackId);
+  showNotification(`Added to queue (${musicQueue.length} tracks)`, "success");
+}
+
+function seekTrack(event) {
+  const audioPlayer = document.getElementById("studio-player");
+  const progressBar = document.getElementById("global-progress-bar");
+  if (!audioPlayer || !progressBar) return;
+
+  const rect = progressBar.getBoundingClientRect();
+  const percent = (event.clientX - rect.left) / rect.width;
+  audioPlayer.currentTime = percent * audioPlayer.duration;
+}
+
+function setVolume(value) {
+  const audioPlayer = document.getElementById("studio-player");
+  if (audioPlayer) audioPlayer.volume = parseFloat(value);
+}
+
+setInterval(() => {
+  const audioPlayer = document.getElementById("studio-player");
+  const progressFill = document.getElementById("global-progress-fill");
+  const timeDisplay = document.getElementById("global-time-display");
+
+  if (audioPlayer && progressFill && timeDisplay) {
+    if (audioPlayer.duration) {
+      const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+      progressFill.style.width = percent + "%";
+
+      const currentMin = Math.floor(audioPlayer.currentTime / 60);
+      const currentSec = Math.floor(audioPlayer.currentTime % 60).toString().padStart(2, "0");
+      const totalMin = Math.floor(audioPlayer.duration / 60);
+      const totalSec = Math.floor(audioPlayer.duration % 60).toString().padStart(2, "0");
+      timeDisplay.textContent = `${currentMin}:${currentSec} / ${totalMin}:${totalSec}`;
+    }
+  }
+}, 1000);
+
+// ==================== LIBRARY FUNCTIONS ====================
 function switchLibraryTab(tab) {
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.classList.remove("active");
   });
-  
-  // Safely update active state
+
   const tabBtns = document.querySelectorAll(".tab-btn");
   tabBtns.forEach(btn => {
     if (btn.textContent.toLowerCase().includes(tab.replace('-', ' '))) {
       btn.classList.add("active");
     }
   });
+
+  document.querySelectorAll(".library-tab-content").forEach(content => {
+    content.style.display = "none";
+    content.classList.remove("active");
+  });
+
+  const tabContent = document.getElementById(`library-${tab}`);
+  if (tabContent) {
+    tabContent.style.display = "block";
+    tabContent.classList.add("active");
+  }
+
+  loadLibraryData();
 }
 
-// ==================== SETTINGS FUNCTIONS ==================== 
+function loadLibraryData() {
+  const favoritesList = document.getElementById("favorites-list");
+  if (favoritesList) {
+    if (favorites.length === 0) {
+      favoritesList.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">💔</div>
+          <div class="empty-title">No favorites yet</div>
+          <div class="empty-message">Start exploring and add tracks to your favorites</div>
+        </div>
+      `;
+    } else {
+      favoritesList.innerHTML = favorites.map(trackId => {
+        const track = getTrackInfo(trackId);
+        return `
+          <div class="library-item">
+            <div class="item-image">
+              <img src="./profile.png" alt="Track" loading="lazy">
+            </div>
+            <div class="item-info">
+              <h4>${track.title}</h4>
+              <p>${track.artist}</p>
+            </div>
+            <div class="item-actions">
+              <button class="action-icon" onclick="playTrack('${trackId}')" aria-label="Play">▶</button>
+              <button class="action-icon" onclick="toggleFavorite('${trackId}')" aria-label="Remove from favorites">❤️</button>
+              <button class="action-icon" onclick="showTrackMenu('${trackId}')" aria-label="More options">⋯</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+  }
+
+  const playlistsList = document.getElementById("playlists-list");
+  if (playlistsList) {
+    if (playlists.length === 0) {
+      playlistsList.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📋</div>
+          <div class="empty-title">No playlists yet</div>
+          <div class="empty-message">Create your first playlist to organize your music</div>
+        </div>
+      `;
+    } else {
+      playlistsList.innerHTML = playlists.map(playlist => `
+        <div class="library-item">
+          <div class="item-image">
+            <img src="./profile.png" alt="Playlist" loading="lazy">
+          </div>
+          <div class="item-info">
+            <h4>${playlist.name}</h4>
+            <p>${playlist.tracks.length} tracks</p>
+          </div>
+          <div class="item-actions">
+            <button class="action-icon" onclick="playPlaylist(${playlist.id})" aria-label="Play playlist">▶</button>
+            <button class="action-icon" onclick="deletePlaylist(${playlist.id})" aria-label="Delete playlist">🗑</button>
+          </div>
+        </div>
+      `).join("");
+    }
+  }
+
+  const historyList = document.getElementById("history-list");
+  if (historyList) {
+    if (musicHistory.length === 0) {
+      historyList.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📜</div>
+          <div class="empty-title">No listening history</div>
+          <div class="empty-message">Tracks you play will appear here</div>
+        </div>
+      `;
+    } else {
+      historyList.innerHTML = musicHistory.slice(0, 10).map(track => `
+        <div class="library-item">
+          <div class="item-image">
+            <img src="./profile.png" alt="Track" loading="lazy">
+          </div>
+          <div class="item-info">
+            <h4>${track.trackTitle}</h4>
+            <p>${new Date(track.timestamp).toLocaleDateString()}</p>
+          </div>
+          <div class="item-actions">
+            <button class="action-icon" onclick="playTrack('${track.trackId}')" aria-label="Play">▶</button>
+          </div>
+        </div>
+      `).join("");
+    }
+  }
+
+  const downloadsList = document.getElementById("downloads-list");
+  if (downloadsList) {
+    downloadsList.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📥</div>
+        <div class="empty-title">No downloads yet</div>
+        <div class="empty-message">Downloaded tracks will appear here</div>
+      </div>
+    `;
+  }
+}
+
+function toggleFavorite(trackId) {
+  const index = favorites.indexOf(trackId);
+  if (index > -1) {
+    favorites.splice(index, 1);
+    showNotification("Removed from favorites", "success");
+  } else {
+    favorites.push(trackId);
+    showNotification("Added to favorites", "success");
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  loadLibraryData();
+  updateDashboard();
+}
+
+function showTrackMenu(trackId) {
+  const track = getTrackInfo(trackId);
+  const menuModal = document.createElement("div");
+  menuModal.className = "modal";
+  menuModal.innerHTML = `
+    <div class="modal-content">
+      <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+      <h2>${escapeHtml(track.title)}</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 20px;">${escapeHtml(track.artist)}</p>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="action-btn" onclick="playTrack('${trackId}'); this.closest('.modal').remove();" style="padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); cursor: pointer; text-align: left;">
+          ▶ Play Track
+        </button>
+        <button class="action-btn" onclick="toggleFavorite('${trackId}'); this.closest('.modal').remove();" style="padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); cursor: pointer; text-align: left;">
+          ❤️ Add to Favorites
+        </button>
+        <button class="action-btn" onclick="addToQueue('${trackId}'); this.closest('.modal').remove();" style="padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); cursor: pointer; text-align: left;">
+          📋 Add to Queue
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(menuModal);
+}
+
+function playPlaylist(playlistId) {
+  const playlist = playlists.find(p => p.id === playlistId);
+  if (playlist && playlist.tracks.length > 0) {
+    musicQueue = [...playlist.tracks];
+    currentQueueIndex = 0;
+    playQueue();
+  } else {
+    showNotification("Playlist is empty", "error");
+  }
+}
+
+// ==================== SETTINGS FUNCTIONS ====================
 function saveSettings() {
   const email = document.getElementById("settings-email").value;
   const name = document.getElementById("settings-name").value;
@@ -604,6 +874,8 @@ function hideLoading() {
 
 function showNotification(message, type = "success") {
   const toast = document.getElementById("notification-toast");
+  if (!toast) return;
+
   toast.textContent = message;
   toast.className = `notification-toast ${type}`;
   toast.style.display = "block";
@@ -613,7 +885,73 @@ function showNotification(message, type = "success") {
   }, 3000);
 }
 
-// ==================== TOUCH DEVICE DETECTION ==================== 
+function toggleNotificationCenter() {
+  const center = document.getElementById("notification-center");
+  const btn = document.querySelector(".notification-btn");
+  if (center) {
+    center.classList.toggle("active");
+    if (btn) btn.setAttribute('aria-expanded', center.classList.contains('active'));
+    if (center.classList.contains("active")) renderNotifications();
+  }
+}
+
+function toggleGlobalPlayPause() {
+  const audioPlayer = document.getElementById("studio-player");
+  const playPauseBtn = document.getElementById("global-play-pause");
+  if (!audioPlayer) return;
+
+  if (isPlaying) {
+    audioPlayer.pause();
+    isPlaying = false;
+    if (playPauseBtn) playPauseBtn.textContent = "▶";
+  } else {
+    audioPlayer.play()
+      .then(() => {
+        isPlaying = true;
+        if (playPauseBtn) playPauseBtn.textContent = "⏸";
+      })
+      .catch(() => {
+        showNotification("Failed to play track", "error");
+      });
+  }
+}
+
+function seekTrack(event) {
+  const audioPlayer = document.getElementById("studio-player");
+  const progressBar = document.getElementById("global-progress-bar");
+  if (!audioPlayer || !progressBar) return;
+
+  const rect = progressBar.getBoundingClientRect();
+  const percent = (event.clientX - rect.left) / rect.width;
+  audioPlayer.currentTime = percent * audioPlayer.duration;
+}
+
+function setVolume(value) {
+  const audioPlayer = document.getElementById("studio-player");
+  if (audioPlayer) audioPlayer.volume = parseFloat(value);
+}
+
+// Update progress bar
+setInterval(() => {
+  const audioPlayer = document.getElementById("studio-player");
+  const progressFill = document.getElementById("global-progress-fill");
+  const timeDisplay = document.getElementById("global-time-display");
+
+  if (audioPlayer && progressFill && timeDisplay) {
+    if (audioPlayer.duration) {
+      const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+      progressFill.style.width = percent + "%";
+
+      const currentMin = Math.floor(audioPlayer.currentTime / 60);
+      const currentSec = Math.floor(audioPlayer.currentTime % 60).toString().padStart(2, "0");
+      const totalMin = Math.floor(audioPlayer.duration / 60);
+      const totalSec = Math.floor(audioPlayer.duration % 60).toString().padStart(2, "0");
+      timeDisplay.textContent = `${currentMin}:${currentSec} / ${totalMin}:${totalSec}`;
+    }
+  }
+}, 1000);
+
+// ==================== TOUCH DEVICE DETECTION ====================
 function detectTouchDevice() {
   return (
     (navigator.maxTouchPoints > 0) ||
@@ -646,7 +984,27 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (e) => {
     const userMenu = document.querySelector(".user-menu");
     if (userMenu && !userMenu.contains(e.target)) {
-      document.getElementById("user-dropdown").classList.remove("active");
+      const dropdown = document.getElementById("user-dropdown");
+      if (dropdown) dropdown.classList.remove("active");
+    }
+  });
+
+  // Close notification center on outside click
+  document.addEventListener("click", (e) => {
+    const notificationCenter = document.getElementById("notification-center");
+    const notificationBtn = document.querySelector(".notification-btn");
+    if (notificationCenter && notificationBtn && !notificationCenter.contains(e.target) && !notificationBtn.contains(e.target)) {
+      notificationCenter.classList.remove("active");
+      if (notificationBtn) notificationBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close search dropdown on outside click
+  document.addEventListener("click", (e) => {
+    const searchBox = document.querySelector(".search-box");
+    const searchDropdown = document.getElementById("search-dropdown");
+    if (searchBox && searchDropdown && !searchBox.contains(e.target)) {
+      searchDropdown.classList.remove("active");
     }
   });
 

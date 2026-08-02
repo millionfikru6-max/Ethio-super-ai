@@ -252,6 +252,16 @@ function deletePlaylist(playlistId) {
 
 // ==================== LYRICS & WAVEFORM ====================
 function showLyrics(trackId) {
+  const lyricsData = {
+    'ethio-future-beat': `Neon lights in Addis night\nCybernetic dreams take flight\nKrar strings meet digital beats\nEthiopian future meets\n\nAncient rhythms, modern sound\nIn this cyber world we found\nHeritage reborn in code\nOn this neon road we ride`,
+    'addis-night-dreams': `Under starlit Addis sky\nDreams are flowing, spirits high\nMellow vibes and gentle sounds\nPeace and love all around\n\nNight whispers soft and low\nWhere the ancient rivers flow\nMelodies of home and heart\nEvery note a work of art`,
+    'cyber-addis-2099': `Welcome to the year 2099\nWhere Ethiopian culture shines\nDigital Nile flows with code\nOn this futuristic road\n\nTradition meets innovation\nIn this new generation\nMusic transcends space and time\nIn this cyber paradigm`,
+    'rift-valley': `Echoes from the Rift Valley\nWhere ancient stories tell\nOf mountains high and valleys deep\nWhere our ancestors once dwelled\n\nNature\'s symphony plays on\nThrough the dawn and through the dusk\nRivers winding, spirits singing\nEvery echo a blessing`,
+    'nile-flow': `The Nile flows eternal\nCarrying dreams downstream\nFrom the highlands to the sea\nLife-giving water stream\n\nDigital waves now rise\nAncient river meets the sky\nFlow forever, never stop\nMusic makes our spirits fly`
+  };
+
+  const lyrics = lyricsData[trackId] || `🎵 Lyrics for track: ${trackId}\n\nLyrics not available for this track yet.`;
+
   const lyricsModal = document.createElement("div");
   lyricsModal.className = "modal";
   lyricsModal.innerHTML = `
@@ -259,8 +269,7 @@ function showLyrics(trackId) {
       <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
       <h2>Lyrics</h2>
       <div class="lyrics-content">
-        <p>🎵 Lyrics for track: ${trackId}</p>
-        <p style="color: var(--text-secondary);">Lyrics feature coming soon...</p>
+        <p style="white-space: pre-wrap; line-height: 2;">${lyrics}</p>
       </div>
     </div>
   `;
